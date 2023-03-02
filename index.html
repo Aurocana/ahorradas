@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/balance.css">
+    <link rel="stylesheet" href="./CSS/header.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title  >
+        Ahorradas 
+        
+    </title>
+</head>
+
+<body>
+
+    <header class="bg-green-500">
+        <div class="TituloHeader">
+            <i class="fa-solid fa-coins"></i>
+            <h1 id="titulo" class="fs-2">AhorrADAS</h1>
+        </div>
+
+        <div class="botonHeader">
+            <nav class="navbar navbar-expand-lg">
+                <ul>
+
+                    <button class="text-bg-success p-3 btn" id="irBalance" href=""> <i
+                            class=" fa-solid fa-scale-balanced"></i> Balance</button>
+
+                    <button class="text-bg-success p-3 btn" id="irCategoria" href=""> <i
+                            class="fa-regular fa-image"></i> Categorias</button>
+
+                    <button class="text-bg-success p-3 btn" id="irReporte" href=""> <i
+                            class="fa-solid fa-calendar-days"></i> Reportes</button>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- ================================Fin del header================================== -->
+    <section id="seccionBalance">
+        <!-- =============================comienza el div Balance ==============================-->
+        <div id="contaner">
+            <div id="balan-filtros">
+                <div id="balance" class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                    <h3 class="fs-3">Balance</h3>
+                    <div class="contanierBalanceGanacias">
+                        <div id="balanceTextoGancias"> Ganacias</div>
+                        <div class="text-success" id="balanceGanancias">+$0</div>
+                    </div>
+                    <div class="contanierBalanceGasto">
+                        <div id="balanceTextoGasto">Gastos</div>
+                        <div class="text-danger" id="balanceGastos">-$0</div>
+                    </div >
+                    <div class="conatanierBalanceTotal">
+                        <div id="balanceTextoTotal"> Total</div>
+                        <div class="text-primary" id="balanceTotal"> $0</div>
+                    </div>
+                </div>
+
+
+                <div id="filtros" class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                    <div id="filtros-header">
+
+                        <h3 class="fs-3">Filtros</h3>
+
+                        <!-- Div Modal Oculatr filtros-->
+                        <div id="boton-filtros">
+                            <button id="mostrarFiltros" class="btn">Mostrar filtros</button>
+                            <button id="ocultarFiltros" class="hidden btn">ocultar filtros</button>
+                        </div>
+                    </div>
+                    <form id="listaFiltros" class="hidden">
+                        <div>
+                            <div id="label-tipo">
+                                <label for="" class="fw-bolder">Tipo</label>
+                            </div>
+                            <select type="date" name="date" id="select-tipo" class="form-select">
+                                <option value="Todas">Todas</option>
+                                <option value="Gasto">Gasto</option>
+                                <option value="Ganancia">Ganancia</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="" class="fw-bolder">Categoría</label>
+
+                            <select name="" id="filtroCategorias" class="form-select">
+
+                            </select>
+                        </div>
+                        <div>
+                            <label for="" class="fw-bolder">Desde</label>
+
+                            <input type="date" class="form-control" id="fechaFiltro">
+                        </div>
+                        <div>
+                            <label for="" class="fw-bolder">Ordenar por</label>
+
+                            <select name="" id="ordenarPor" class="form-select">
+                                <option value="Todas">Todas</option>
+                                <option value="Más reciente">Más reciente</option>
+                                <option value="Más antigua">Más antigua</option>
+                                <option value="Mayor monto">Mayor monto</option>
+                                <option value="Menor monto">Menor monto</option>
+                                <option value="A/Z">A/Z</option>
+                                <option value="Z/A">Z/A</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- =====================================div Operaciones=============================-->
+            <div id="operaciones" class="shadow-lg bg-body-tertiary rounded">
+
+                <div id="Header-opera">
+                    <h4 class="fs-3">Operaciones</h4>
+                    <button id="agregarOperacion" class="text-bg-success btn">+ Nueva operación</button>
+                </div>
+                <div id="imagenTransacciones" class="hidden">
+                    <img src="./imag/ilustracion Transacciones.svg" class="rounded mx-auto d-block" alt=""
+                        style="height: 25rem;" srcset="">
+                </div>
+                <div class="encabezadoTransacciones" id="encabezadoTransacciones">
+                    <div class="encabezadoDescripcion">Descripción</div>
+                    <div class="encabezadoMonto">Monto</div>
+                    <div class="encabezadoTipo">Tipo</div>
+                    <div class="encabezadoCategoria">Categoría</div>
+                    <div class="encabezadoFecha">Fecha</div>
+                    <div class="encabezadoAcciones">Acciones</div>
+                </div>
+                <div id="listaTransacciones">
+
+                </div>
+            </div>
+    </section>
+
+    <!--================================comienza  Operaciones =====================================-->
+    <section id="nuevaTransaccion" class="shadow-lg p-3 mb-5 bg-body-tertiary rounded hidden">
+        <div id="contenedorForm">
+            <div class="mb-3" class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                <label for="descripcion-NuevaOpera" class="col-form-label">Descripción</label>
+                <input type="text" class="form-control" id="descripción-opera">
+            </div>
+            <div class="mb-3">
+                <label for="monto-NuevaOpera" class="col-form-label">Monto</label>
+                <input type="number" class="form-control" id="monto-opera">
+            </div>
+            <div class="mb-3">
+                <label for="tipo-NuevaOpera" class="col-form-label">Tipo</label>
+                <select type="date" name="date" id="tipo-opera" class="form-select">
+                    <option value="Gasto">Gasto</option>
+                    <option value="Ganancia">Ganancia</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="categoria-NuevaOpera" class="col-form-label">Categoria</label>
+                <select type="date" name="date" id="categoria-opera" class="form-select">
+                    <option value="Gasto">Todas</option>
+
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="fecha-NuevaOpera" class="col-form-label">Fecha</label>
+                <input type="date" class="form-control" id="fecha-opera">
+            </div>
+
+            <label for="" hidden id="idProducto"></label>
+
+            <button type="button" class="text-bg-info btn btn-info" id="agregarTransaccion">Agregar</button>
+
+            <button type="button" class="text-bg-danger btn btn-primary" id="regresarBalance">Cancelar</button>
+        </div>
+    </section>
+
+
+    <!-- ========================================Comienza Categoria =======================-->
+    <section id="categorias" class="hidden">
+        <div>
+            <div id="contanerCateg" class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                <h2 class="fs-3">Categorías</h2>
+                <label for="">Nombre</label>
+                <input type="Text" placeholder="agregar categorías" id="tituloCategoria">
+                <button  type="button" class="text-bg-success btn btn-primary"    id="btnAgregarCategoria">Agregar</button>
+
+            </div>
+
+            <!--======================== comienza Editar Categorias ===================-->
+
+
+            <div id="listaCategorias" class="shadow-lg bg-body-tertiary rounded">
+
+                <div id="Header-opera">
+                    <h4 class="fs-4">Nombre Categoria</h4>
+                </div>
+                <div id="listaCategorias">
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="editarCategorias" class="hidden">
+        <div id="modal-content" class="modal-editar">
+            <h2 class="fs-4">Editar Categoría</h2>
+
+            <div>
+                <div>
+
+                    <label for="">Nombre Anterior</label>
+                    <input type="text" id="nomCatEditAntiguo" disabled>
+                </div>
+                <div>
+
+                    <label for="">Nombre Nuevo</label>
+                    <input type="text" id="nomCatEdit">
+                </div>
+            </div>
+            <br>
+
+            <div class="contanierButtonEditarCat">
+                <button type="button" class="text-bg-info btn btn-primary"id="btnGuardarEdit">Editar</button>
+                <button type="button" class="text-bg-danger btn btn-primary" id="btnCancelarEditarCat">Cancelar</button>
+            </div>
+        </div>
+    </section>
+git
+    <!--======================Comienza Reportes-->
+    <section id="reportes" class="hidden">
+        <div>
+            <h1 class="fs-2">Reportes</h1>
+        </div>
+        <div>
+
+            <div>
+                <h2 class="fs-4">Resumen</h2>
+            </div>
+
+            <div>
+                <table class="table table-borderless" id="tablaResumen">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Categoría con mayor ganancia</td>
+                        <td>Perros</td>
+                        <td>$14</td>
+                    </tr>
+                    <tr>
+                        <td>Categoría con mayor gasto</td>
+                        <td>Perros</td>
+                        <td>$14</td>
+                    </tr>
+                    <tr>
+                        <td>Categoría con mayor balance</td>
+                        <td>Perros</td>
+                        <td>$14</td>
+                    </tr>
+                    <tr>
+                        <td>Mes con mayor ganancia</td>
+                        <td>Perros</td>
+                        <td>$14</td>
+                    </tr>
+                    <tr>
+                        <td>Mes con mayor gasto</td>
+                        <td>Perros</td>
+                        <td>$14</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div>
+
+
+            <div>
+                <h2 class="fs-4">Totales por categorías</h2>
+                <table class="table table-borderless" id="tablaReportesCategoria">
+                    <tr>
+                        <th>Categorias</th>
+                        <th>Ganacias</th>
+                        <th>Gastos</th>
+                        <th>Balance</th>
+                    </tr>
+                    <tr>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <h2 class="fs-4">Totales por mes</h2>
+                <table class="table table-borderless" id="tablaReportesMeses">
+
+                </table>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="./Js/main.js"></script>
+</body>
+
+</html>

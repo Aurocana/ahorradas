@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #e60000;
+}
+
+section {
+  padding: 3rem 9%;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 3rem;
+  background-color: #e60000;
+  color: #fff;
+  font-size: 1.7rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+p {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+section {
+  min-width: 1200px;
+  margin: 20px;
+  padding: 3px;
+  background-color: rgb(250, 245, 239);
+  /*  display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items: start;
+    background-color: antiquewhite; */
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.categoria {
+  display: flex;
+}
+
+.operacion {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px;
+}
+
+.operacion div {
+  width: 100px;
+}
+
+.encabezadoTransacciones {
+  padding: 5px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  justify-content: center;
+}
+.operacion__descripcion,
+.operacion__categoria,
+.encabezadoCategoria,
+.encabezadoDescripcion {
+  width: 150px !important;
+}
+.encabezadoTransacciones div {
+  width: 100px;
+}
+.operacion__acciones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 70px !important;
+}
+.encabezadoAcciones {
+  width: 70px !important;
+}
+
+#contaner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+#balan-filtros {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: start;
+  width: 35%;
+}
+#operaciones {
+  overflow: scroll;
+  padding: 0px;
+  margin: 0px;
+  height: 500px;
+  width: 900px;
+}
+#Header-opera {
+  padding: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#balance {
+  margin: 0;
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction:column;
+}
+.contanierBalanceGanacias,
+.contanierBalanceGasto,
+ .conatanierBalanceTotal,
+ .contanierButtonEditarCat{
+ display: flex; 
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ padding: 10px;
+}
+
+
+#filtros {
+  padding: 20px;
+  width: 100%;
+}
+#filtros-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#boton-filtros {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.hidden {
+  display: none !important;
+}
+img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+#nuevaTransaccion {
+  margin: auto;
+
+  width: 80%;
+  height: 80%;
+  padding: 50px, 20px, 40px, 20px;
+}

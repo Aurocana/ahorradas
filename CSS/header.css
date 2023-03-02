@@ -1,0 +1,30 @@
+header {
+  
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  background-color: blanchedalmond;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.TituloHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-self: flex-start;
+  gap: 3;
+  flex-wrap: 3;
+}
+.botonHeader {
+  width: auto;
+  display: flex;
+  
+  justify-content: space-around;
+  flex-grow: 0;
+}
+
+#titulo {
+  cursor: pointer;
+}
