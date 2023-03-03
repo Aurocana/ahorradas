@@ -16,9 +16,9 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title  >
-        Ahorradas 
-        
+    <title>
+        Ahorradas
+
     </title>
 </head>
 
@@ -61,7 +61,7 @@
                     <div class="contanierBalanceGasto">
                         <div id="balanceTextoGasto">Gastos</div>
                         <div class="text-danger" id="balanceGastos">-$0</div>
-                    </div >
+                    </div>
                     <div class="conatanierBalanceTotal">
                         <div id="balanceTextoTotal"> Total</div>
                         <div class="text-primary" id="balanceTotal"> $0</div>
@@ -147,38 +147,44 @@
     <!--================================comienza  Operaciones =====================================-->
     <section id="nuevaTransaccion" class="shadow-lg p-3 mb-5 bg-body-tertiary rounded hidden">
         <div id="contenedorForm">
-            <div class="mb-3" class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-                <label for="descripcion-NuevaOpera" class="col-form-label">Descripción</label>
-                <input type="text" class="form-control" id="descripción-opera">
-            </div>
-            <div class="mb-3">
-                <label for="monto-NuevaOpera" class="col-form-label">Monto</label>
-                <input type="number" class="form-control" id="monto-opera">
-            </div>
-            <div class="mb-3">
-                <label for="tipo-NuevaOpera" class="col-form-label">Tipo</label>
-                <select type="date" name="date" id="tipo-opera" class="form-select">
-                    <option value="Gasto">Gasto</option>
-                    <option value="Ganancia">Ganancia</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="categoria-NuevaOpera" class="col-form-label">Categoria</label>
-                <select type="date" name="date" id="categoria-opera" class="form-select">
-                    <option value="Gasto">Todas</option>
 
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="fecha-NuevaOpera" class="col-form-label">Fecha</label>
-                <input type="date" class="form-control" id="fecha-opera">
-            </div>
 
-            <label for="" hidden id="idProducto"></label>
+            <!-- =========================================Formulario de Operaciones =========================== -->
+            <form action="" id="form-submit">
+                <div class="mb-3" class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                    <label for="descripcion-NuevaOpera" class="col-form-label">Descripción</label>
+                    <input type="text" class="form-control" id="descripción-opera">
+                </div>
+                <div class="mb-3">
+                    <label for="monto-NuevaOpera" class="col-form-label">Monto</label>
+                    <input type="number" class="form-control" id="monto-opera">
+                </div>
+                <div class="mb-3">
+                    <label for="tipo-NuevaOpera" class="col-form-label">Tipo</label>
+                    <select type="date" name="date" id="tipo-opera" class="form-select">
+                        <option value="Gasto">Gasto</option>
+                        <option value="Ganancia">Ganancia</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="categoria-NuevaOpera" class="col-form-label">Categoria</label>
+                    <select type="date" name="date" id="categoria-opera" class="form-select">
+                        <option value="Gasto">Todas</option>
 
-            <button type="button" class="text-bg-info btn btn-info" id="agregarTransaccion">Agregar</button>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="fecha-NuevaOpera" class="col-form-label">Fecha</label>
+                    <input type="date" class="form-control" id="fecha-opera">
+                </div>
 
-            <button type="button" class="text-bg-danger btn btn-primary" id="regresarBalance">Cancelar</button>
+                <label for="" hidden id="idProducto"></label>
+
+                <button type="button" class="text-bg-info btn btn-info" id="agregarTransaccion">Agregar</button>
+
+                <button type="button" class="text-bg-danger btn btn-primary" id="regresarBalance">Cancelar</button>
+            </form>
+            <!--termino del formulario de operaciones  -->
         </div>
     </section>
 
@@ -190,7 +196,7 @@
                 <h2 class="fs-3">Categorías</h2>
                 <label for="">Nombre</label>
                 <input type="Text" placeholder="agregar categorías" id="tituloCategoria">
-                <button  type="button" class="text-bg-success btn btn-primary"    id="btnAgregarCategoria">Agregar</button>
+                <button type="button" class="text-bg-success btn btn-primary" id="btnAgregarCategoria">Agregar</button>
 
             </div>
 
@@ -230,12 +236,11 @@
             <br>
 
             <div class="contanierButtonEditarCat">
-                <button type="button" class="text-bg-info btn btn-primary"id="btnGuardarEdit">Editar</button>
+                <button type="button" class="text-bg-info btn btn-primary" id="btnGuardarEdit">Editar</button>
                 <button type="button" class="text-bg-danger btn btn-primary" id="btnCancelarEditarCat">Cancelar</button>
             </div>
         </div>
     </section>
-git
     <!--======================Comienza Reportes-->
     <section id="reportes" class="hidden">
         <div>
@@ -256,28 +261,28 @@ git
                     </tr>
                     <tr>
                         <td>Categoría con mayor ganancia</td>
-                        <td>Perros</td>
-                        <td>$14</td>
+                        <td></td>
+                        <td>$0</td>
                     </tr>
                     <tr>
                         <td>Categoría con mayor gasto</td>
-                        <td>Perros</td>
-                        <td>$14</td>
+                        <td></td>
+                        <td>$0</td>
                     </tr>
                     <tr>
                         <td>Categoría con mayor balance</td>
-                        <td>Perros</td>
-                        <td>$14</td>
+                        <td></td>
+                        <td>$0</td>
                     </tr>
                     <tr>
                         <td>Mes con mayor ganancia</td>
-                        <td>Perros</td>
-                        <td>$14</td>
+                        <td></td>
+                        <td>$0</td>
                     </tr>
                     <tr>
                         <td>Mes con mayor gasto</td>
-                        <td>Perros</td>
-                        <td>$14</td>
+                        <td></td>
+                        <td>$0</td>
                     </tr>
                 </table>
             </div>

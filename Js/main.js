@@ -2,122 +2,13 @@ function $(element) {
   return document.querySelector(element);
 }
 
-let transacciones = [
-  {
-    id: crypto.randomUUID(),
-    descripcion: "Pago de servicios",
-    monto: 5000,
-    tipo: "Gasto",
-    categoria: "Transporte",
-    fecha: "2023-02-17",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "tes1",
-    monto: 564654,
-    tipo: "Gasto",
-    categoria: "Servicios",
-    fecha: "2023-02-17",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "React",
-    monto: 1,
-    tipo: "Ganancia",
-    categoria: "Servicios",
-    fecha: "2023-02-17",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "Jornada de trabajo",
-    monto: 56000,
-    tipo: "Gasto",
-    categoria: "Salud",
-    fecha: "2023-02-17",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "testing",
-    monto: 44,
-    tipo: "Gasto",
-    categoria: "Comida",
-    fecha: "2023-02-17",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "testing",
-    monto: 1,
-    tipo: "Ganancia",
-    categoria: "Ropa",
-    fecha: "2023-02-17",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "Pago de servicios",
-    monto: 5000,
-    tipo: "Gasto",
-    categoria: "Servicios",
-    fecha: "2023-02-17",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "tes1",
-    monto: 564654,
-    tipo: "Gasto",
-    categoria: "Servicios",
-    fecha: "2023-02-17",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "React",
-    monto: 45678,
-    tipo: "Gasto",
-    categoria: "Ropa",
-    fecha: "2023-01-24",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "React",
-    monto: 8978,
-    tipo: "Ganancia",
-    categoria: "Comida",
-    fecha: "2021-01-24",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "React",
-    monto: 8978,
-    tipo: "Gasto",
-    categoria: "Comida",
-    fecha: "2021-01-24",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "React",
-    monto: 2000,
-    tipo: "Ganancia",
-    categoria: "Transporte",
-    fecha: "2021-01-24",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "Prueba",
-    monto: 5445,
-    tipo: "Ganancia",
-    categoria: "Transporte",
-    fecha: "2023-03-25",
-  },
-  {
-    id: crypto.randomUUID(),
-    descripcion: "Buen dia",
-    monto: 1,
-    tipo: "Ganancia",
-    categoria: "Salud",
-    fecha: "2023-02-17",
-  },
-];
+if (localStorage.getItem("transacciones") === null) {
+  localStorage.setItem("transacciones", JSON.stringify([]));
+}
 
-let categorias = ["Servicios", "Comida", "Transporte", "Ropa", "Salud"];
+if (localStorage.getItem("categorias") === null) {
+  localStorage.setItem("categorias", JSON.stringify([]));
+}
 
 const $imagenTransacciones = $("#imagenTransacciones");
 const $seccionBalance = $("#seccionBalance");
@@ -522,6 +413,7 @@ function mostrarCategorias() {
 }
 
 $("#btnGuardarEdit").addEventListener("click", () => {
+  categorias = JSON.parse(localStorage.getItem("categorias"));
   let catAntiguo = $("#nomCatEditAntiguo").value;
   let id = $("#nomCatEdit").value;
   categorias = categorias.filter((categoria) => categoria != catAntiguo);
@@ -532,18 +424,22 @@ $("#btnGuardarEdit").addEventListener("click", () => {
   $operaciones.classList.add("hidden");
   $reportes.classList.add("hidden");
   $("#editarCategorias").classList.add("hidden");
+  localStorage.setItem("categorias", JSON.stringify(categorias));
 });
 
 $("#btnAgregarCategoria").addEventListener("click", () => {
+  categorias = JSON.parse(localStorage.getItem("categorias"));
   let categoria = $("#tituloCategoria").value;
   categorias.push(categoria);
   mostrarCategorias();
   $("#tituloCategoria").value = "";
+  localStorage.setItem("categorias", JSON.stringify(categorias));
 });
 
 function eliminarCategoria(id) {
   categorias = categorias.filter((categoria) => categoria !== id);
   mostrarCategorias();
+  localStorage.setItem("categorias", JSON.stringify(categorias));
 }
 
 // Lista operaciones
@@ -591,6 +487,13 @@ function editar(id) {
   $("#tipo-opera").value = transaccionAEditar.tipo;
   $("#fecha-opera").value = transaccionAEditar.fecha;
   $("#idProducto").innerHTML = transaccionAEditar.id;
+  actualizarBalances();
+}
+
+function actualizarBalances() {
+  balanceGanancias();
+  balanceGastos();
+  balanceTotal();
 }
 
 function eliminar(id) {
@@ -598,15 +501,20 @@ function eliminar(id) {
     return transaccion.id !== id;
   });
   mostrarTransacciones(transacciones);
+  actualizarBalances();
+  if (transacciones.length == 0) {
+    mostrarImagenTransaccion();
+  }
+  localStorage.setItem("transacciones", JSON.stringify(transacciones));
 }
 
 window.addEventListener("load", () => {
+  transacciones = JSON.parse(localStorage.getItem("transacciones"));
+  categorias = JSON.parse(localStorage.getItem("categorias"));
   resetearFiltros();
   mostrarTransacciones(transacciones);
   mostrarImagenTransaccion();
-  balanceGanancias();
-  balanceGastos();
-  balanceTotal();
+  actualizarBalances();
 });
 
 // Transacciones
@@ -619,6 +527,7 @@ function resetearFiltros() {
 }
 
 $agregarTransaccion.addEventListener("click", () => {
+  transacciones = JSON.parse(localStorage.getItem("transacciones"));
   if ($("#monto-opera").value == "" || isNaN($("#monto-opera").value)) {
     alert("Ingrese un monto correcto");
     return;
@@ -649,7 +558,7 @@ $agregarTransaccion.addEventListener("click", () => {
     nuevaTransaccion.fecha = $("#fecha-opera").value;
     transacciones.unshift(nuevaTransaccion);
   }
- //=========================Resetear ===================================
+  //=========================Resetear ===================================
   $categorias.classList.add("hidden");
   $operaciones.classList.add("hidden");
   $reportes.classList.add("hidden");
@@ -657,8 +566,9 @@ $agregarTransaccion.addEventListener("click", () => {
   $seccionBalance.classList.remove("hidden");
   resetearFiltros();
   mostrarTransacciones(transacciones);
+  actualizarBalances();
+  localStorage.setItem("transacciones", JSON.stringify(transacciones));
 });
-
 
 $("#select-tipo").addEventListener("change", () => {
   let tipo = $("#select-tipo").value;
@@ -771,8 +681,11 @@ $("#ordenarPor").addEventListener("change", () => {
       break;
   }
 });
-
 // ===============================LocalStorage=========================
 //transacciones= localStorage.addEventListener("load",() => {
- // transacciones = JSON.parse(localStorage.getItem("transicciones"));
- // const $form = document.querySelector("#contenedorForm");
+// transacciones = JSON.parse(localStorage.getItem("transicciones"));
+// const $form = document.querySelector("#contenedorForm");
+
+//  function estaMostrar(()=>{
+//    const
+//  });
